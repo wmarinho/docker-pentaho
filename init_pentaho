@@ -4,7 +4,7 @@
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 # Description: Pentaho BA Server
-usename=pentaho
+username=pentaho
 start_pentaho_script="/opt/pentaho/biserver-ce/start-pentaho.sh"
 stop_pentaho_script="/opt/pentaho/biserver-ce/stop-pentaho.sh"
 prog="pentaho"
