@@ -33,8 +33,16 @@ RUN chown -R pentaho:pentaho $JAVA_PENTAHO_HOME
 ADD init_pentaho /etc/init.d/pentaho
 RUN chmod +x /etc/init.d/pentaho
 
-CMD service pentaho start && tail -t $JAVA_PENTAHO_HOME/biserver-ce/tomcat/logs/catalina.out
+RUN apt-get install -y openssh-server apache2 supervisor
+RUN mkdir -p /var/run/sshd
+RUN echo 'pentaho:pentaho' |chpasswd
+RUN mkdir -p /var/log/supervisor
 
-EXPOSE 8080
+#CMD service pentaho start && tail -t $JAVA_PENTAHO_HOME/biserver-ce/tomcat/logs/catalina.out
+
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
+EXPOSE 22 8080
+
+CMD ["/usr/bin/supervisord"]
