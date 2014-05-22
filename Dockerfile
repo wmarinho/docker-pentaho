@@ -29,9 +29,10 @@ RUN useradd -s /bin/bash -m -d $JAVA_PENTAHO_HOME pentaho
 
 RUN /usr/bin/unzip /tmp/biserver-ce-${BISERVER_TAG}.zip -d $JAVA_PENTAHO_HOME
 
-RUN chown -R pentaho:pentaho $JAVA_PENTAHO_HOME
 ADD init_pentaho /etc/init.d/pentaho
-ADD start-pentaho.sh $JAVA_PENTAHO_HOME/biserver-ce
+ADD start-pentaho.sh $JAVA_PENTAHO_HOME/biserver-ce/
+
+RUN chown -R pentaho:pentaho $JAVA_PENTAHO_HOME
 RUN chmod +x /etc/init.d/pentaho
 
 RUN apt-get install -y openssh-server apache2 supervisor
