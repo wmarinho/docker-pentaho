@@ -34,6 +34,8 @@ ADD start-pentaho.sh $JAVA_PENTAHO_HOME/biserver-ce/
 
 RUN chown -R pentaho:pentaho $JAVA_PENTAHO_HOME
 RUN chmod +x /etc/init.d/pentaho
+RUN chmod +x $JAVA_PENTAHO_HOME/biserver-ce/start-pentaho.sh
+RUN rm -R $JAVA_PENTAHO_HOME/biserver-ce/*.bat
 
 RUN apt-get install -y openssh-server apache2 supervisor
 RUN mkdir -p /var/run/sshd
