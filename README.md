@@ -1,2 +1,2 @@
-pentaho-training-pack
+docker-pentaho
 =====================
