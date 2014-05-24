@@ -5,12 +5,12 @@
 # Pull from Centos
 
 
-FROM wmarinho/ubuntu-jdk7
+FROM wmarinho/ubuntu:ubuntu-jdk7
 
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV BISERVER_TAG 5.0.1-stable
+ENV BISERVER_TAG 5.0-SNAPSHOT
 ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
@@ -21,7 +21,7 @@ RUN apt-get update
 RUN apt-get install wget -y
 
 # Download Pentaho BI Server
-RUN /usr/bin/wget -nv http://ufpr.dl.sourceforge.net/project/pentaho/Business%20Intelligence%20Server/${BISERVER_TAG}/biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip
+RUN /usr/bin/wget -nv http://ci.pentaho.com/job/BISERVER-CE-5.0/lastSuccessfulBuild/artifact/assembly/dist/biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip
 
 RUN apt-get install unzip -y
 
