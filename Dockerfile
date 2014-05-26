@@ -31,26 +31,29 @@ RUN useradd -s /bin/bash -m -d $PENTAHO_HOME pentaho
 
 RUN /usr/bin/unzip /tmp/biserver-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME
 
+RUN rm -f /tmp/biserver-ce-${BISERVER_TAG}.zip 
+
 ADD init_pentaho /etc/init.d/pentaho
-#ADD start-pentaho.sh $JAVA_PENTAHO_HOME/biserver-ce/
+ADD start-pentaho.sh $JAVA_PENTAHO_HOME/biserver-ce/
 
 # Disable first-time startup prompt
 RUN rm $PENTAHO_HOME/biserver-ce/promptuser.sh
+
 # Disable daemon mode for Tomcat
 RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/pentaho/biserver-ce/tomcat/bin/startup.sh
 
 RUN apt-get install -y git
 
 RUN chown -R pentaho:pentaho $PENTAHO_HOME
-RUN chmod +x /etc/init.d/pentaho
 RUN chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
 RUN rm -R $PENTAHO_HOME/biserver-ce/*.bat
 
 RUN apt-get install -y openssh-server apache2 supervisor
 RUN mkdir -p /var/run/sshd
-RUN echo 'pentaho:pentaho' |chpasswd
-RUN mkdir -p /var/log/supervisor
 
+RUN echo 'pentaho:pentaho' |chpasswd
+
+RUN mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
