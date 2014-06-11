@@ -20,17 +20,49 @@ Pentaho - Rapid Deployment with Docker
 
 `sudo docker pull wmarinho/pentaho:5.0.1-stable`
 
-* Running instance
+* Listing images on the host
+
+`sudo docker images`
+
+* Running container as daemon
 
 `sudo docker run -p 8080:8080 -d wmarinho/pentaho`
 
-
-* Running multiples instances
+* Running multiples containers as daemon
 
 `
 sudo docker run -p 8081:8080 -d wmarinho/pentaho
 sudo docker run -p 8082:8080 -d wmarinho/pentaho
 `
+
+* Make sure your container is running
+
+`sudo docker ps`
+
+* Stop containers
+
+`sudo docker stop <CONTAINER_ID>`
+
+* Start containers
+
+`sudo docker start <CONTAINER_ID>`
+
+
+* Running an interactive container
+
+`sudo docker run -i -t wmarinho/pentaho /bin/bash`
+
+Inside our container we can configure Pentaho and add custom package or plugins
+
+* Now we have a container with the change we want to make
+
+`sudo docker commit -m="Added Sparkl plugin" <CONTAINER_ID> wmarinho/pentaho:latest-sparkl`
+
+* We can then look at our new `wmarinho/pentaho:latest-sparkl` image using the `docker images` command
+
+* To use our new image to create a container we can then:
+
+`sudo docker run -p 8082:8080 -d wmarinho/pentaho:latest-sparkl`
 
 * Accessing instances
 
@@ -39,3 +71,7 @@ sudo docker run -p 8082:8080 -d wmarinho/pentaho
 [http://localhost:8081](http://localhost:8081)
 
 [http://localhost:8082](http://localhost:8082)
+
+
+
+* 
