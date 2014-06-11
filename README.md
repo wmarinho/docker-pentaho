@@ -14,29 +14,23 @@ Pentaho - Rapid Deployment with Docker
 ##Pull repository
 * Release: TRUNK.SNAPSHOT
 
-<pre>
-sudo docker pull wmarinho/pentaho
-</pre>
+`sudo docker pull wmarinho/pentaho`
 
 * Release: 5.0.1-stable
 
-<pre>
-sudo docker pull wmarinho/pentaho:5.0.1-stable
-</pre>
+`sudo docker pull wmarinho/pentaho:5.0.1-stable`
 
 * Running instance
 
-<pre>
-sudo docker run -p 8080:8080 -d wmarinho/pentaho
-</pre>
+`sudo docker run -p 8080:8080 -d wmarinho/pentaho`
 
 
 * Running multiples instances
 
-<pre>
+`
 sudo docker run -p 8081:8080 -d wmarinho/pentaho
 sudo docker run -p 8082:8080 -d wmarinho/pentaho
-</pre>
+`
 
 * Accessing instances
 
