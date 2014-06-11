@@ -32,6 +32,7 @@ Pentaho - Rapid Deployment with Docker
 
 `
 sudo docker run -p 8081:8080 -d wmarinho/pentaho
+
 sudo docker run -p 8082:8080 -d wmarinho/pentaho
 `
 
