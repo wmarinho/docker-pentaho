@@ -74,4 +74,4 @@ Inside our container we can configure Pentaho and add custom package or plugins
 
 
 
-* Now we can easily run multiple containers with multiples versions using only one server
+* Now we can easily run multiples containers and versions of Pentaho using only one server
