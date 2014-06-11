@@ -38,6 +38,7 @@ sudo docker run -p 8082:8080 -d wmarinho/pentaho
 </pre>
 
 * Accessing instances
+
 [http://localhost:8080](http://localhost:8080)
 
 [http://localhost:8081](http://localhost:8081)
