@@ -31,6 +31,7 @@ Pentaho - Rapid Deployment with Docker
 * Running multiples containers as daemon
 
 `sudo docker run -p 8081:8080 -d wmarinho/pentaho`
+
 `sudo docker run -p 8082:8080 -d wmarinho/pentaho`
 
 
