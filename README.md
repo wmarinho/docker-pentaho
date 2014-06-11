@@ -62,7 +62,7 @@ Inside our container we can configure Pentaho and add custom package or plugins
 
 * To use our new image to create a container we can then:
 
-`sudo docker run -p 8082:8080 -d wmarinho/pentaho:latest-sparkl`
+`sudo docker run -p 8080:8080 -d wmarinho/pentaho:latest-sparkl`
 
 * Accessing instances
 
