@@ -26,7 +26,8 @@ Pentaho - Rapid Deployment with Docker
 
 * Running container as daemon
 
-`sudo docker run -p 8080:8080 -d wmarinho/pentaho`
+`$ sudo docker run  -p 8080:8080 -d wmarinho/pentaho
+58daea398cae983a79578ac22a01f87a5d0a84d08b72d473a6c70d72ad82505b`
 
 * Running multiples containers as daemon
 
@@ -37,7 +38,10 @@ sudo docker run -p 8082:8080 -d wmarinho/pentaho
 
 * Make sure your container is running
 
-`sudo docker ps`
+`$ sudo docker ps
+CONTAINER ID        IMAGE                     COMMAND                CREATED             STATUS              PORTS                            NAMES
+65f8010043f8        wmarinho/pentaho:latest   /usr/bin/supervisord   3 seconds ago       Up 2 seconds        0.0.0.0:8081->8080/tcp, 22/tcp   silly_torvalds
+58daea398cae        wmarinho/pentaho:latest   /usr/bin/supervisord   2 minutes ago       Up 2 minutes        0.0.0.0:8080->8080/tcp, 22/tcp   jolly_mccarthy`
 
 * Stop containers
 
