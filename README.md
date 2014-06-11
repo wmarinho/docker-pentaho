@@ -64,7 +64,7 @@ Inside our container we can configure Pentaho and add custom package or plugins
 
 `sudo docker run -p 8080:8080 -d wmarinho/pentaho:latest-sparkl`
 
-* Accessing instances
+* Accessing Pentaho
 
 [http://localhost:8080](http://localhost:8080)
 
