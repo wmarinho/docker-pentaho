@@ -29,7 +29,7 @@ RUN /usr/bin/wget -nv http://ci.pentaho.com/view/Mondrian/job/mondrian/lastSucce
 #RUN useradd -s /bin/bash -m -d $PENTAHO_HOME pentaho
 #RUN echo 'pentaho:pentaho' |chpasswd
 
-RUN /usr/bin/unzip /tmp/biserver-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME &&  /usr/bin/unzip /tmp/pdi-ce-${PDI_TAG}.zip -d $PENTAHO_HOME && /usr/bin/unzip /tmp/workbench-${PSW_TAG}.zip -d $PENTAHO_HOME 
+RUN /usr/bin/unzip -q /tmp/biserver-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME &&  /usr/bin/unzip -q /tmp/pdi-ce-${PDI_TAG}.zip -d $PENTAHO_HOME && /usr/bin/unzip -q /tmp/workbench-${PSW_TAG}.zip -d $PENTAHO_HOME 
 RUN mv $PENTAHO_HOME/workbench-${PSW_TAG} $PENTAHO_HOME/workbench
 
 RUN rm -f /tmp/biserver-ce-${BISERVER_TAG}.zip /tmp/pdi-ce-${PDI_TAG}.zip /tmp/workbench-${PSW_TAG}.zip
@@ -48,7 +48,7 @@ RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/pentaho/biserver-ce/tomcat/bi
 #RUN chown -R pentaho:pentaho $PENTAHO_HOME
 RUN chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
 
-RUN echo 'root:password' |chpasswd
+RUN echo 'root:pentaho' |chpasswd
 
 
 EXPOSE 22 8080 
