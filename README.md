@@ -13,6 +13,7 @@ Rapid Deployment Pentaho with Docker
 
 ##Pull docker-pentaho repository
 * Release: TRUNK.SNAPSHOT
+
 <pre>
 sudo docker pull wmarinho/pentaho
 </pre>
