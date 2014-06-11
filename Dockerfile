@@ -6,7 +6,7 @@ FROM wmarinho/ubuntu:ubuntu-jdk7
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV BISERVER_TAG TRUNK-SNAPSHOT-jenkins-BISERVER-CE-920
+ENV BISERVER_TAG SNAPSHOT
 ENV PDI_TAG TRUNK-SNAPSHOT
 ENV PSW_TAG TRUNK-SNAPSHOT
 
@@ -21,7 +21,7 @@ RUN mkdir -p /var/run/sshd && mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Download Pentaho BI Server
-RUN /usr/bin/wget -nv http://ci.pentaho.com/job/BISERVER-CE/lastSuccessfulBuild/artifact/assembly/dist/biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip
+RUN /usr/bin/wget -nv http://ci.pentaho.com/job/BISERVER-CE-5.0/lastSuccessfulBuild/artifact/assembly/dist/biserver-ce-5.0-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip
 RUN /usr/bin/wget -nv http://ci.pentaho.com/job/Kettle/lastSuccessfulBuild/artifact/assembly/dist/pdi-ce-${PDI_TAG}.zip -O /tmp/pdi-ce-${PDI_TAG}.zip
 RUN /usr/bin/wget -nv http://ci.pentaho.com/view/Mondrian/job/mondrian/lastSuccessfulBuild/artifact/dist/workbench-${PSW_TAG}.zip -O /tmp/workbench-${PSW_TAG}.zip
 
