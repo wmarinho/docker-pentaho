@@ -40,12 +40,8 @@ RUN rm $PENTAHO_HOME/biserver-ce/promptuser.sh
 RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/pentaho/biserver-ce/tomcat/bin/startup.sh
 
 
-<<<<<<< HEAD
-RUN chown -R pentaho:pentaho $PENTAHO_HOME
-RUN chmod +x /etc/init.d/pentaho
-=======
+#RUN chmod +x /etc/init.d/pentaho
 #RUN chown -R pentaho:pentaho $PENTAHO_HOME
->>>>>>> 5.1-CE-RC
 RUN chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
 RUN rm -R $PENTAHO_HOME/biserver-ce/*.bat
 
