@@ -11,15 +11,13 @@ ENV PDI_TAG TRUNK-SNAPSHOT
 ENV PSW_TAG TRUNK-SNAPSHOT
 
 ENV PENTAHO_HOME /opt/pentaho
-ENV KETTLE_HOME /opt/pentaho/pdi-ce
 
 # Apply JAVA_HOME
 RUN . /etc/environment
 ENV PENTAHO_JAVA_HOME $JAVA_HOME
 
 RUN apt-get update && apt-get install wget unzip git openssh-server apache2 supervisor -y
-RUN mkdir -p /var/run/sshd
-RUN mkdir -p /var/log/supervisor
+RUN mkdir -p /var/run/sshd && mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Download Pentaho BI Server
@@ -31,14 +29,11 @@ RUN /usr/bin/wget -nv http://ci.pentaho.com/view/Mondrian/job/mondrian/lastSucce
 #RUN useradd -s /bin/bash -m -d $PENTAHO_HOME pentaho
 #RUN echo 'pentaho:pentaho' |chpasswd
 
-RUN /usr/bin/unzip /tmp/biserver-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME
-RUN /usr/bin/unzip /tmp/pdi-ce-${PDI_TAG}.zip -d $PENTAHO_HOME
-RUN /usr/bin/unzip /tmp/workbench-${PSW_TAG}.zip -d $PENTAHO_HOME
-RUN mv $PENTAHO_HOME/workbench-${PSW_TAG} $PENTAHO_HOME/workbench
+RUN /usr/bin/unzip /tmp/biserver-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME &&  /usr/bin/unzip /tmp/pdi-ce-${PDI_TAG}.zip -d $PENTAHO_HOME && /usr/bin/unzip /tmp/workbench-${PSW_TAG}.zip -d $PENTAHO_HOME 
+R
+UN mv $PENTAHO_HOME/workbench-${PSW_TAG} $PENTAHO_HOME/workbench
 
-RUN rm -f /tmp/biserver-ce-${BISERVER_TAG}.zip 
-RUN rm -f /tmp/pdi-ce-${PDI_TAG}.zip
-RUN rm -f /tmp/workbench-${PSW_TAG}.zip
+RUN rm -f /tmp/biserver-ce-${BISERVER_TAG}.zip /tmp/pdi-ce-${PDI_TAG}.zip /tmp/workbench-${PSW_TAG}.zip
 
 #ADD init_pentaho /etc/init.d/pentaho
 #ADD start-pentaho.sh $JAVA_PENTAHO_HOME/biserver-ce/
@@ -53,9 +48,8 @@ RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/pentaho/biserver-ce/tomcat/bi
 #RUN chmod +x /etc/init.d/pentaho
 #RUN chown -R pentaho:pentaho $PENTAHO_HOME
 RUN chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
-RUN rm -R $PENTAHO_HOME/biserver-ce/*.bat
 
-
+RUN echo 'root:password' |chpasswd
 
 
 EXPOSE 22 8080 
