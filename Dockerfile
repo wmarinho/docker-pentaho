@@ -30,8 +30,7 @@ RUN /usr/bin/wget -nv http://ci.pentaho.com/view/Mondrian/job/mondrian/lastSucce
 #RUN echo 'pentaho:pentaho' |chpasswd
 
 RUN /usr/bin/unzip /tmp/biserver-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME &&  /usr/bin/unzip /tmp/pdi-ce-${PDI_TAG}.zip -d $PENTAHO_HOME && /usr/bin/unzip /tmp/workbench-${PSW_TAG}.zip -d $PENTAHO_HOME 
-R
-UN mv $PENTAHO_HOME/workbench-${PSW_TAG} $PENTAHO_HOME/workbench
+RUN mv $PENTAHO_HOME/workbench-${PSW_TAG} $PENTAHO_HOME/workbench
 
 RUN rm -f /tmp/biserver-ce-${BISERVER_TAG}.zip /tmp/pdi-ce-${PDI_TAG}.zip /tmp/workbench-${PSW_TAG}.zip
 
