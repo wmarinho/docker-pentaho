@@ -64,6 +64,16 @@ Please see details below
 
 `$ sudo docker ps`
 
+
+* Accessing Pentaho
+
+ [http://localhost:8080](http://localhost:8080)
+
+ [http://localhost:8081](http://localhost:8081)
+
+ [http://localhost:8082](http://localhost:8082)
+
+
 * Stop containers
 
 `sudo docker stop <CONTAINER_ID>`
@@ -89,13 +99,7 @@ Inside our container we can configure Pentaho and add custom package or plugins
 
 `sudo docker run -p 8080:8080 -d wmarinho/pentaho:latest-sparkl`
 
-* Accessing Pentaho
 
-[http://localhost:8080](http://localhost:8080)
-
-[http://localhost:8081](http://localhost:8081)
-
-[http://localhost:8082](http://localhost:8082)
 
 
 
