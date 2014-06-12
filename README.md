@@ -9,6 +9,20 @@ Pentaho - Rapid Deployment with Docker
 
 ## Install Docker
 
+###Ubuntu Trusty 14.04 (LTS) (64-bit)
+Ubuntu Trusty comes with a 3.13.0 Linux kernel, and a docker.io package which installs all its prerequisites from Ubuntu's repository.
+
+Note: Ubuntu (and Debian) contain a much older KDE3/GNOME2 package called docker, so the package and the executable are called docker.io.
+Installation
+To install the latest Ubuntu package (may not be the latest Docker release):
+
+`
+$ sudo apt-get update
+$ sudo apt-get install docker.io
+$ sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
+$ sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+`
+### Others
 [https://docs.docker.com/installation/](https://docs.docker.com/installation/)
 
 ##Pull repository
