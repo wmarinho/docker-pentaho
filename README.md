@@ -123,3 +123,8 @@ sudo docker run -p 8080:8080 -i -t myimage/pentaho:mytag /bin/bash
 </pre>
 
 Please see [Dockerfile Reference] (https://docs.docker.com/reference/builder/) for additional information.
+
+
+##Docker Hub account
+
+You can create a docker account and push your images. Please see [Working with Docker Hub](https://docs.docker.com/userguide/dockerrepos/)
