@@ -1,8 +1,3 @@
-# Centos image
-#
-# Version 0.1
-
-# Pull from Centos
 
 
 FROM wmarinho/ubuntu:ubuntu-jdk7
