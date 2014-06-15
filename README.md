@@ -105,12 +105,21 @@ Inside our container we can configure Pentaho and add custom package or plugins
 
 ##Building your image
 
-###Clone Dockerfile template
+###Clone and edit Dockerfile template
 
 <pre>
 sudo git clone https://github.com/wmarinho/docker-pentaho.git
 cd docker-pentaho
 sudo vi Dockerfile
+sudo docker build -t myimage/pentaho:mytag .
+sudo docker images
+sudo docker run -p 8080:8080 -d myimage/pentaho:mytag
+</pre>
+
+Or run in interactive mode
+
+<pre>
+sudo docker run -p 8080:8080 -i -t myimage/pentaho:mytag /bin/bash
 </pre>
 
 Please see [Dockerfile Reference] (https://docs.docker.com/reference/builder/) for additional information.
