@@ -101,6 +101,16 @@ Inside our container we can configure Pentaho and add custom package or plugins
 
 
 
-
-
 * Now we can easily run multiples containers and versions of Pentaho using only one server
+
+##Building your image
+
+###Clone Dockerfile template
+
+<pre>
+sudo git clone https://github.com/wmarinho/docker-pentaho.git
+cd docker-pentaho
+sudo vi Dockerfile
+</pre>
+
+Please see [Dockerfile Reference] (https://docs.docker.com/reference/builder/) for additional information.
