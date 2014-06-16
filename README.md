@@ -49,7 +49,7 @@ Please see details below
 
 `sudo docker pull wmarinho/pentaho:5.1-CE-RC`
 
-[Others Tags](https://registry.hub.docker.com/u/wmarinho/pentaho/tags/manage/)
+More tags available [here](https://registry.hub.docker.com/u/wmarinho/pentaho/tags/manage/)
 
 * Listing images on the host
 
