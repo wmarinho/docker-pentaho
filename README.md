@@ -45,6 +45,12 @@ Please see details below
 
 `sudo docker pull wmarinho/pentaho:5.0.1-stable`
 
+* Release: 5.1 CE RC
+
+`sudo docker pull wmarinho/pentaho:5.1-CE-RC`
+
+[Others Tags](https://registry.hub.docker.com/u/wmarinho/pentaho/tags/manage/)
+
 * Listing images on the host
 
 `sudo docker images`
