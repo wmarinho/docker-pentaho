@@ -6,7 +6,7 @@ FROM wmarinho/ubuntu:oracle-jdk-7
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV BISERVER_TAG 5.1-7
+ENV BISERVER_TAG 5.1-9
 
 ENV PENTAHO_HOME /opt/pentaho
 
@@ -15,10 +15,8 @@ RUN . /etc/environment
 ENV PENTAHO_JAVA_HOME $JAVA_HOME
 
 RUN apt-get update \
-	&& apt-get install wget unzip git supervisor -y \
-	&& mkdir -p /var/log/supervisor
+	&& apt-get install wget unzip git -y 
 
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Download Pentaho BI Server
 RUN /usr/bin/wget -nv http://ci.pentaho.com/job/biserver-ce-5.1/lastSuccessfulBuild/artifact/assembly/dist/biserver-ce-TRUNK-SNAPSHOT-jenkins-biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip
@@ -37,4 +35,4 @@ RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/pentaho/biserver-ce/tomcat/bi
 RUN chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
 
 EXPOSE 8080 
-CMD ["/usr/bin/supervisord"]
+CMD ["/opt/pentaho/biserver-ce/start-pentaho.sh"]
