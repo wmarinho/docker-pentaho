@@ -32,6 +32,10 @@ RUN mv /tmp/pentaho.war $PENTAHO_HOME/biserver-ce/tomcat/webapps \
 	&& rm -rf /tmp/pentaho* \
 	&& cp $PENTAHO_HOME/biserver-ce/data/lib/hsql*.jar $PENTAHO_HOME/biserver-ce/tomcat/lib
 
+RUN /usr/bin/wget -nv https://h2database.googlecode.com/files/h2-2010-03-05.zip -O /tmp/h2-2010-03-05.zip \
+	&& /usr/bin/unzip -q /tmp/h2-2010-03-05.zip -d /tmp \
+	&& cp /tmp/h2/bin/h2*.jar $PENTAHO_HOME/biserver-ce/tomcat/lib \
+	&& rm -rf /tmp/h2*
 
 # Disable first-time startup prompt
 #RUN rm $PENTAHO_HOME/biserver-ce/promptuser.sh
@@ -43,4 +47,4 @@ RUN mv /tmp/pentaho.war $PENTAHO_HOME/biserver-ce/tomcat/webapps \
 #RUN chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
 
 EXPOSE 8080 
-CMD ["run.sh"]
+CMD ["./run.sh"]
