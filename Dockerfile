@@ -37,14 +37,16 @@ RUN /usr/bin/wget -nv https://h2database.googlecode.com/files/h2-2010-03-05.zip 
 	&& cp /tmp/h2/bin/h2*.jar $PENTAHO_HOME/biserver-ce/tomcat/lib \
 	&& rm -rf /tmp/h2*
 
-# Disable first-time startup prompt
-#RUN rm $PENTAHO_HOME/biserver-ce/promptuser.sh
+ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-7-oracle
+ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
+ENV CATALINA_OPTS -Djava.awt.headless=true -Xms512m -Xmx1024m -XX:MaxPermSize=256m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000 -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000
 
-# Disable daemon mode for Tomcat
-#RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/pentaho/biserver-ce/tomcat/bin/startup.sh
+ENV CATALINA_HOME /opt/pentaho/biserver-ce/tomcat
+ENV CATALINA_BASE /opt/pentaho/biserver-ce/tomcat
 
+RUN apt-get install postgresql-client-9.3 -y
+ADD start_pentaho.sh $PENTAHO_HOME/biserver-ce/
 
-#RUN chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
 
 EXPOSE 8080 
-CMD ["./run.sh"]
+CMD ["$PENTAHO_HOME/biserver-ce/start_pentaho.sh"]
