@@ -6,7 +6,7 @@ FROM wmarinho/tomcat:6
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV BISERVER_TAG 5.1-12
+ENV BISERVER_TAG SNAPSHOT
 
 ENV PENTAHO_HOME /opt/pentaho
 
@@ -19,7 +19,7 @@ RUN apt-get update \
 
 
 # Download Pentaho BI Server
-RUN /usr/bin/wget -nv http://ci.pentaho.com/job/biserver-ce-5.1/lastSuccessfulBuild/artifact/assembly/dist/biserver-manual-ce-TRUNK-SNAPSHOT-jenkins-biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip
+RUN /usr/bin/wget -nv  http://ci.pentaho.com/job/BISERVER-CE-5.0/lastSuccessfulBuild/artifact/assembly/dist/biserver-manual-ce-5.0-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip 
 
 RUN /usr/bin/unzip -q /tmp/biserver-ce-${BISERVER_TAG}.zip -d /tmp  \
 	&& mkdir  -p $PENTAHO_HOME/biserver-ce \
