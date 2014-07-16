@@ -16,11 +16,11 @@ if [ ! "$PGDATABASE" ]; then
         PGDATABASE=postgres
 fi
 if [ ! "$PGUSER" ]; then
-        PGUSER=docker
+        PGUSER=pgadmin
 fi
 if [ ! "$PGPASSWORD" ]; then
-        PGPASSWORD=docker
-	export PGPASSWORD=docker
+        PGPASSWORD=pgadmin
+	export PGPASSWORD=pgadmin
 fi
 
 CHK_QUARTZ=`echo "$(psql -U $PGUSER  -h $PGHOST -l | grep quartz | wc -l)"`
@@ -38,7 +38,7 @@ if [ "$CHK_HIBERNATE" -eq "0" ]; then
         psql -U $PGUSER -h $PGHOST -d postgres -f $PENTAHO_HOME/biserver-ce/data/postgresql/create_repository_postgresql.sql
 fi
 if [ "$CHK_QUARTZ" -eq "0" ]; then
-        sed 's/\\connect quartz/--\\connect quartz/g' -i $PENTAHO_HOME/biserver-ce/data/postgresql/create_quartz_postgresql.sql
+#        sed 's/\\connect quartz/--\\connect quartz/g' -i $PENTAHO_HOME/biserver-ce/data/postgresql/create_quartz_postgresql.sql
         psql -U $PGUSER -h $PGHOST -d postgres -f $PENTAHO_HOME/biserver-ce/data/postgresql/create_quartz_postgresql.sql
 fi
 
