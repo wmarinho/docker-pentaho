@@ -52,9 +52,12 @@ if [ "$PGHOST" ]; then
 	$PENTAHO_HOME/scripts/replace.sh "@@jcr_user@@" "$PGPASSWORD" -path "$PENTAHO_HOME/config_tmp/" -infile
 	$PENTAHO_HOME/scripts/replace.sh "@@pentaho_user@@" "$PGPASSWORD" -path "$PENTAHO_HOME/config_tmp/" -infile
 	$PENTAHO_HOME/scripts/replace.sh "awsbiuser" "$PGUSER" -path "$PENTAHO_HOME/config_tmp/" -infile
-        
+        if [ "$RDS_HOSTNAME" ]; then
+	 sed -i 's/TABLESPACE = pg_default;/;/g' $PENTAHO_HOME/config_tmp/postgresql/biserver-ce/data/postgresql/*.sql
+	fi
+	
 	cp -r $PENTAHO_HOME/config_tmp/postgresql/biserver-ce/* $PENTAHO_HOME/biserver-ce/
-	rm -rf $PENTAHO_HOME/config $PENTAHO_HOME/config_tmp
+	rm -rf $PENTAHO_HOME/config_tmp
 	
 	
 	if [ "$CHK_JCR" -eq "0" ]; then
