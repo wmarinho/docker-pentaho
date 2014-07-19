@@ -1,5 +1,10 @@
 #!/bin/bash
 
+PGHOST="$RDS_HOSTNAME"
+PGUSER="$RDS_USERNAME"
+PGPASSWORD="$RDS_PASSWORD"
+PGDATABASE="$RDS_DB_NAME"
+
 
 if [ "$PGHOST" ]; then
 	if [ ! "$PGPORT" ]; then
