@@ -12,8 +12,8 @@ if [ "$PGHOST" ]; then
 	        PGUSER=pgadmin
 	fi
 	if [ ! "$PGPASSWORD" ]; then
-	        PGPASSWORD=pgadmin
-	        export PGPASSWORD=pgadmin
+	        PGPASSWORD=pgadmin.
+	        export PGPASSWORD=pgadmin.
 	fi
 	
 	echo "Checking PostgreSQL connection ..."
