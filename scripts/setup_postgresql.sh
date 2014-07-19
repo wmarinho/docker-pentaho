@@ -18,9 +18,9 @@ if [ "$PGHOST" ]; then
 	fi
 	if [ ! "$PGPASSWORD" ]; then
 	        PGPASSWORD=pgadmin.
-	        export PGPASSWORD=pgadmin.
+	        
 	fi
-	
+	export PGPASSWORD="$PGPASSWORD"
 	echo "Checking PostgreSQL connection ..."
 
 	nc -zv $PGHOST $PGPORT
