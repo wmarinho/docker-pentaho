@@ -417,6 +417,16 @@ value="{0}/etc;org.pentaho.security.publish;jcr:read,jcr:readAccessControl,jcr:w
       Run with a cluster journal
   -->
   <Cluster id="node1">
-    <Journal class="org.apache.jackrabbit.core.journal.MemoryJournal"/>
+    <Journal class="org.apache.jackrabbit.core.journal.DatabaseJournal">
+      <param name="revision" value="${rep.home}/revision.log"/>
+      <param name="url" value="jdbc:postgresql://localhost:5432/jackrabbit"/>
+      <param name="driver" value="org.postgresql.Driver"/>
+      <param name="user" value="jcr_user"/>
+      <param name="password" value="@@jcr_user@@"/>
+      <param name="databaseType" value="postgresql"/>
+      <param name="janitorEnabled" value="true"/>
+      <param name="janitorSleep" value="86400"/>
+      <param name="janitorFirstRunHourOfDay" value="3"/>
+    </Journal>
   </Cluster>
 </Repository>
