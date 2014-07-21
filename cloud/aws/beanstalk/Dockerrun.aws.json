@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion" : "1",
   "Image" : {
-      "Name" : "wmarinho/pentaho-biserver:5.1-TRUNK-cluster"
+      "Name" : "wmarinho/pentaho-biserver:5.1-TRUNK-elastic"
     },
 	"Ports" : [
 	  { "ContainerPort" : "8080"}
