@@ -27,9 +27,15 @@ sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 ### Others
 [https://docs.docker.com/installation/](https://docs.docker.com/installation/)
 
-###Running Pentaho - Rapid Deployment
+###Running Pentaho with PostgreSQL
 <pre>
-sudo docker run -p 8080:8080 -d wmarinho/pentaho
+docker run --name postgresql -d -p 5432:5432 -d wmarinho/postgresql:9.3
+</pre>
+<pre>
+docker run --name pentaho -d -p 8080:8080 -e PGHOST=192.168.1.110 wmarinho/pentaho-biserver:5.1-TRUNK
+</pre>
+<pre>
+docker logs -f pentaho
 </pre>
 
 [http://localhost:8080](http://localhost:8080)
@@ -37,17 +43,17 @@ sudo docker run -p 8080:8080 -d wmarinho/pentaho
 Please see details below
 
 ##Pull repository
-* Release: TRUNK.SNAPSHOT
+* Release: 5.0-TRUNK
 
-`sudo docker pull wmarinho/pentaho`
+`sudo docker pull wmarinho/pentaho-biserver:5.0-TRUNK`
 
-* Release: 5.0.1-stable
+* Release: 5.1.0.0
 
-`sudo docker pull wmarinho/pentaho:5.0.1-stable`
+`sudo docker pull wmarinho/pentaho-biserver:5.1.0.0`
 
-* Release: 5.1 CE RC
+* Release: 5.1-TRUNK
 
-`sudo docker pull wmarinho/pentaho:5.1-CE-RC`
+`sudo docker pull wmarinho/pentaho-biserver:5.1-TRUNK`
 
 More tags available [here](https://registry.hub.docker.com/u/wmarinho/pentaho/tags/manage/)
 
@@ -55,15 +61,11 @@ More tags available [here](https://registry.hub.docker.com/u/wmarinho/pentaho/ta
 
 `sudo docker images`
 
-* Running container as daemon
 
-`$ sudo docker run  -p 8080:8080 -d wmarinho/pentaho`
 
-* Running multiples containers as daemon
+`sudo docker run -p 8080:8080 -d wmarinho/pentaho-biserver:5.0-TRUNK`
 
-`sudo docker run -p 8081:8080 -d wmarinho/pentaho`
-
-`sudo docker run -p 8082:8080 -d wmarinho/pentaho`
+`sudo docker run -p 8081:8080 -d wmarinho/pentaho-biserver:5.1-TRUNK`
 
 
 * Make sure your container is running
@@ -77,8 +79,6 @@ More tags available [here](https://registry.hub.docker.com/u/wmarinho/pentaho/ta
 
  [http://localhost:8081](http://localhost:8081)
 
- [http://localhost:8082](http://localhost:8082)
-
 
 * Stop containers
 
@@ -91,19 +91,9 @@ More tags available [here](https://registry.hub.docker.com/u/wmarinho/pentaho/ta
 
 * Running an interactive container
 
-`sudo docker run -i -t wmarinho/pentaho /bin/bash`
+`sudo docker run -i -t wmarinho/pentaho-biserver:5.1-TRUNK /bin/bash`
 
-Inside our container we can configure Pentaho and add custom package or plugins
 
-* Now we have a container with the change we want to make
-
-`sudo docker commit -m="Added Sparkl plugin" <CONTAINER_ID> wmarinho/pentaho:latest-sparkl`
-
-* We can then look at our new `wmarinho/pentaho:latest-sparkl` image using the `docker images` command
-
-* To use our new image to create a container we can then:
-
-`sudo docker run -p 8080:8080 -d wmarinho/pentaho:latest-sparkl`
 
 
 
