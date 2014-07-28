@@ -1,0 +1,7 @@
+<slave_config>
+	<slaveserver>
+	<name>server1</name>
+	<network_interface>eth0</network_interface>
+	<port>8181</port>
+	</slaveserver>
+</slave_config>
