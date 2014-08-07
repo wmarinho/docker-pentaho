@@ -1,4 +1,9 @@
-Access Key ID:
-AKIAIG7YYF5VC6VK2YYQ
-Secret Access Key:
-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
+{
+  "AWSEBDockerrunVersion" : "1",
+  "Image" : {
+      "Name" : "wmarinho/pentaho-biserver:5.1-TRUNK"
+    },
+	"Ports" : [
+	  { "ContainerPort" : "8080"}
+	]
+}
