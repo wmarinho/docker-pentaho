@@ -6,7 +6,7 @@ FROM wmarinho/ubuntu:oracle-jdk-7
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV BISERVER_TAG 5.1-SNAPSHOT-jenkins-biserver-ce-5.1-19
+ENV BISERVER_TAG 5.1-SNAPSHOT-jenkins-biserver-ce-5.1-22
 
 ENV PENTAHO_HOME /opt/pentaho
 
