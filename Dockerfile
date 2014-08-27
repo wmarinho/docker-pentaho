@@ -6,7 +6,7 @@ FROM wmarinho/ubuntu:oracle-jdk-7
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV BISERVER_TAG 5.1-SNAPSHOT-jenkins-biserver-ce-5.1-22
+ENV BISERVER_TAG 5.1-SNAPSHOT-jenkins-biserver-ce-5.1-30
 
 ENV PENTAHO_HOME /opt/pentaho
 
@@ -40,6 +40,8 @@ ADD scripts/run.sh /
 
 RUN sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/pentaho/biserver-ce/tomcat/bin/startup.sh &&\
     chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
+
+RUN apt-get install zip -y
 
 
 EXPOSE 8080 
