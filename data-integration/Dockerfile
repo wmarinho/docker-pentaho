@@ -25,8 +25,13 @@ RUN  /usr/bin/unzip -q /tmp/pdi-ce-${PDI_TAG}.zip -d  $PENTAHO_HOME &&\
 ADD run.sh /opt/pentaho/data-integration/
 ADD slave_dyn.xml /opt/pentaho/data-integration/
 
+RUN wget -nv https://s3.amazonaws.com/aws-cli/awscli-bundle.zip; \
+    unzip awscli-bundle.zip; \
+    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws; \
+    rm -rf awscli-bundle.*
+
 WORKDIR /opt/pentaho/data-integration
 
-EXPOSE 8181 40000 40001 40002 40003 40005 40005 40006 40007 40008 40009 40010
+EXPOSE 8181
 
 CMD ["./run.sh"]
