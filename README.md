@@ -29,10 +29,13 @@ sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 
 ###Running Pentaho with PostgreSQL
 <pre>
+git clone https://github.com/wmarinho/docker-postgresql.git
+cd docker-postgresql
+docker build -t wmarinho/postgresql:9.3 .
 docker run --name postgresql -d -p 5432:5432 -d wmarinho/postgresql:9.3
 </pre>
 <pre>
-docker run --name pentaho -d -p 8080:8080 -e PGHOST=192.168.1.110 wmarinho/pentaho-biserver:5.1-TRUNK
+docker run --name pentaho -d -p 8080:8080 -e PGHOST=<postgres_hostname> wmarinho/pentaho-biserver:5.1-TRUNK
 </pre>
 <pre>
 docker logs -f pentaho
