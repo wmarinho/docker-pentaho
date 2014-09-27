@@ -35,7 +35,7 @@ docker build -t wmarinho/postgresql:9.3 .
 docker run --name postgresql -d -p 5432:5432 -d wmarinho/postgresql:9.3
 </pre>
 <pre>
-docker run --name pentaho -d -p 8080:8080 -e PGHOST=<postgres_hostname> wmarinho/pentaho-biserver:5.1-TRUNK
+docker run --name pentaho -d -p 8080:8080 -e PGHOST={postgres_hostname} wmarinho/pentaho-biserver:5.1-TRUNK
 </pre>
 <pre>
 docker logs -f pentaho
