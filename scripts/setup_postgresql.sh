@@ -74,7 +74,6 @@ if [ "$PGHOST" ]; then
 	 if [ "$CHK_SDATA" -eq "0" ]; then
                 psql -U $PGUSER -h $PGHOST -d $PGDATABASE -f $PENTAHO_HOME/biserver-ce/data/postgresql/sampledata.sql
         fi
-	touch /.pentaho_pgconfig
 
 fi
 
