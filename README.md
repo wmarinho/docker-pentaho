@@ -27,38 +27,30 @@ sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 ### Others
 [https://docs.docker.com/installation/](https://docs.docker.com/installation/)
 
-###Running Pentaho with PostgreSQL
+###Building Pentaho 5.2 RC
+
 <pre>
-git clone https://github.com/wmarinho/docker-postgresql.git
-cd docker-postgresql
-docker build -t wmarinho/postgresql:9.3 .
-docker run --name postgresql -d -p 5432:5432 -d wmarinho/postgresql:9.3
+git clone https://github.com/wmarinho/docker-pentaho.git
+cd docker-pentaho
+</pre>
+#### Downloading Pentaho 5.2 RC https://pentaho.app.box.com/52-CE-RC/2/2496407065
+
+<pre>
+wget -q https://path_to_biserver-ce-5.2.0.0-194.zip -O  /tmp/biserver-ce-5.2.0.0-194.zip
+</pre>
+
+
+
+<pre>
+docker build -t wmarinho/pentaho-biserver:5.2-RC .
 </pre>
 <pre>
-docker run --name pentaho -d -p 8080:8080 -e PGHOST={postgres_hostname} wmarinho/pentaho-biserver:5.1-TRUNK
+docker run  -d -p 8080:8080 -e INSTALL_PLUGIN=marketplace,cdf,cda,cde,cgg,sparkl,saiku wmarinho/pentaho-biserver:5.2-RC
 </pre>
 <pre>
 docker logs -f pentaho
 </pre>
 
-[http://localhost:8080](http://localhost:8080)
-
-Please see details below
-
-##Pull repository
-* Release: 5.0-TRUNK
-
-`sudo docker pull wmarinho/pentaho-biserver:5.0-TRUNK`
-
-* Release: 5.1.0.0
-
-`sudo docker pull wmarinho/pentaho-biserver:5.1.0.0`
-
-* Release: 5.1-TRUNK
-
-`sudo docker pull wmarinho/pentaho-biserver:5.1-TRUNK`
-
-More tags available [here](https://registry.hub.docker.com/u/wmarinho/pentaho/tags/manage/)
 
 * Listing images on the host
 
@@ -94,7 +86,7 @@ More tags available [here](https://registry.hub.docker.com/u/wmarinho/pentaho/ta
 
 * Running an interactive container
 
-`sudo docker run -i -t wmarinho/pentaho-biserver:5.1-TRUNK /bin/bash`
+`sudo docker run -i -t wmarinho/pentaho-biserver:5.2-RC /bin/bash`
 
 
 
