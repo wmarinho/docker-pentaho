@@ -36,6 +36,7 @@ git checkout 5.2-RC
 </pre>
 #### Downloading Pentaho 5.2 RC https://pentaho.app.box.com/52-CE-RC/2/2496407065
 
+Copy and past path to biserver-ce-5.2.0.0-194.zip
 <pre>
 wget -q https://path_to_biserver-ce-5.2.0.0-194.zip -O  /tmp/biserver-ce-5.2.0.0-194.zip
 </pre>
