@@ -32,6 +32,7 @@ sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 <pre>
 git clone https://github.com/wmarinho/docker-pentaho.git
 cd docker-pentaho
+git checkout 5.2-RC
 </pre>
 #### Downloading Pentaho 5.2 RC https://pentaho.app.box.com/52-CE-RC/2/2496407065
 
