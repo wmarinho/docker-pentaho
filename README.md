@@ -1,4 +1,4 @@
-Pentaho - Rapid Deployment with Docker 
+Pentaho & Docker 
 =====================
 
 ##Pentaho
