@@ -59,9 +59,9 @@ docker logs -f pentaho
 
 
 
-`sudo docker run -p 8080:8080 -d wmarinho/pentaho-biserver:5.0-TRUNK`
+`sudo docker run -p 8080:8080 -d wmarinho/pentaho-biserver:5.2-RC`
 
-`sudo docker run -p 8081:8080 -d wmarinho/pentaho-biserver:5.1-TRUNK`
+`sudo docker run -p 8081:8080 -d wmarinho/pentaho-biserver:5.2-RC`
 
 
 * Make sure your container is running
