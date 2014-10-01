@@ -1,0 +1,27 @@
+---
+name: panamax
+description: ''
+keywords: ''
+type: Default
+documentation: ''
+images:
+- name: pentaho
+  source: wmarinho/pentaho:5.2-RC
+  category: WEB
+  type: Default
+  ports:
+  - host_port: '80'
+    container_port: '8080'
+    proto: TCP
+  environment:
+  - variable: INSTALL_PLUGIN
+    value: saiku
+  - variable: PGHOST
+    value: 172.17.42.1
+- name: postgresql
+  source: wmarinho/postgresql:9.3
+  type: Default
+  ports:
+  - host_port: '5432'
+    container_port: '5432'
+    proto: TCP
