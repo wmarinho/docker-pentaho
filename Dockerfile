@@ -20,7 +20,7 @@ RUN apt-get update && \
 
 
 # Download Pentaho BI Server
-RUN /usr/bin/wget -nv  http://ufpr.dl.sourceforge.net/project/pentaho/Business%20Intelligence%20Server/5.2/biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip
+RUN /usr/bin/wget -nv http://softlayer-sng.dl.sourceforge.net/project/pentaho/Business%20Intelligence%20Server/5.2/biserver-ce-${BISERVER_TAG}.zip -O biserver-ce-${BISERVER_TAG}.zip
 
 RUN /usr/bin/unzip -q /tmp/biserver-ce-${BISERVER_TAG}.zip -d  $PENTAHO_HOME && \
     rm -f /tmp/biserver-ce-${BISERVER_TAG}.zip $PENTAHO_HOME/biserver-ce/promptuser.sh && \
