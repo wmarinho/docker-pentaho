@@ -14,8 +14,9 @@ ENV PENTAHO_HOME /opt/pentaho
 RUN . /etc/environment
 ENV PENTAHO_JAVA_HOME $JAVA_HOME
 
-RUN apt-get update \
-	&& apt-get install wget unzip git postgresql-client-9.3 zip -y 
+RUN apt-get update && \
+	apt-get install wget unzip git postgresql-client-9.3 zip -y && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 # Download Pentaho BI Server
