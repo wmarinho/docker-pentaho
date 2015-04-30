@@ -1,4 +1,4 @@
-FROM wmarinho/ubuntu:oracle-jdk-7
+FROM java:7
 
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
