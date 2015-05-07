@@ -9,7 +9,7 @@ ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
 RUN . /etc/environment
-ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-7-oracle
+ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
 
 RUN apt-get update \
 	&& apt-get install wget unzip git -y && \
