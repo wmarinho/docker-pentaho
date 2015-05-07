@@ -1,12 +1,13 @@
 
 
-FROM wmarinho/ubuntu:oracle-jdk-7
+FROM java:8
 
 
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV BISERVER_TAG 5.2.0.0-209
+ENV BISERVER_VERSION 5.3
+ENV BISERVER_TAG 5.3.0.0-213
 
 ENV PENTAHO_HOME /opt/pentaho
 
@@ -15,21 +16,20 @@ RUN . /etc/environment
 ENV PENTAHO_JAVA_HOME $JAVA_HOME
 
 RUN apt-get update && \
-	apt-get install wget unzip git postgresql-client-9.3 zip -y && \
+	apt-get install wget unzip git postgresql-client-9.4 zip -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 # Download Pentaho BI Server
-#RUN /usr/bin/wget -nv http://softlayer-sng.dl.sourceforge.net/project/pentaho/Business%20Intelligence%20Server/5.2/biserver-ce-${BISERVER_TAG}.zip -O biserver-ce-${BISERVER_TAG}.zip
-RUN /usr/bin/wget -nv  http://ufpr.dl.sourceforge.net/project/pentaho/Business%20Intelligence%20Server/5.2/biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip 
+RUN /usr/bin/wget -nv  http://softlayer-dal.dl.sourceforge.net/project/pentaho/Business%20Intelligence%20Server/${BISERVER_VERSION}/biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip 
 
 RUN /usr/bin/unzip -q /tmp/biserver-ce-${BISERVER_TAG}.zip -d  $PENTAHO_HOME && \
     rm -f /tmp/biserver-ce-${BISERVER_TAG}.zip $PENTAHO_HOME/biserver-ce/promptuser.sh && \
     sed -i -e 's/\(exec ".*"\) start/\1 run/' /opt/pentaho/biserver-ce/tomcat/bin/startup.sh && \
     chmod +x $PENTAHO_HOME/biserver-ce/start-pentaho.sh
 
-ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-7-oracle
-ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
+ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 COPY config $PENTAHO_HOME/config
 COPY scripts $PENTAHO_HOME/scripts
