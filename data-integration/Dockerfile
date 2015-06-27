@@ -18,7 +18,7 @@ RUN apt-get update \
 
 
 # Download Pentaho BI Server
-RUN /usr/bin/wget -nv http://downloads.sourceforge.net/project/pentaho/Data%20Integration/${PDI_VERSION}/pdi-ce-${PDI_TAG}.zip -O /tmp/pdi-ce-${PDI_TAG}.zip
+RUN /usr/bin/wget -nv http://ufpr.dl.sourceforge.net/project/pentaho/Data%20Integration/${PDI_VERSION}/pdi-ce-${PDI_TAG}.zip -O /tmp/pdi-ce-${PDI_TAG}.zip
 
 RUN  /usr/bin/unzip -q /tmp/pdi-ce-${PDI_TAG}.zip -d  $PENTAHO_HOME &&\
      rm /tmp/pdi-ce-${PDI_TAG}.zip
