@@ -21,7 +21,6 @@ RUN apt-get update && \
 
 
 # Download Pentaho BI Server
-#RUN /usr/bin/wget -nv  http://softlayer-dal.dl.sourceforge.net/project/pentaho/Business%20Intelligence%20Server/${BISERVER_VERSION}/biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip 
 RUN /usr/bin/wget -nv http://nbtelecom.dl.sourceforge.net/project/pentaho/Business%20Intelligence%20Server/${BISERVER_VERSION}/biserver-ce-${BISERVER_TAG}.zip -O /tmp/biserver-ce-${BISERVER_TAG}.zip
 
 RUN /usr/bin/unzip -q /tmp/biserver-ce-${BISERVER_TAG}.zip -d  $PENTAHO_HOME && \
