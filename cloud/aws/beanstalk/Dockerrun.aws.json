@@ -1,9 +1,13 @@
 {
-  "AWSEBDockerrunVersion" : "1",
-  "Image" : {
-      "Name" : "wmarinho/pentaho-biserver"
-    },
-	"Ports" : [
-	  { "ContainerPort" : "8080"}
-	]
+  "AWSEBDockerrunVersion" : "2",
+  "containerDefinitions " : {
+      "name" : "pentaho-biserver",
+      "imagem": "wmarinho´/pentaho-biserver",
+      "portMappings" : [
+	{
+	   "hostPort": 8080,
+           "containerPort": 8080
+	}
+      ]
+    }
 }
