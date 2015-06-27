@@ -3,7 +3,8 @@ FROM java:7
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV PDI_TAG 5.2.0.0-209
+ENV PENTAHO_VERSION 5.4
+ENV PENTAHO_TAG 5.4.0.1-130
 
 ENV PENTAHO_HOME /opt/pentaho
 
@@ -17,11 +18,9 @@ RUN apt-get update \
 
 
 # Download Pentaho BI Server
-#RUN /usr/bin/wget -nv  http://ci.pentaho.com/view/Data%20Integration/job/kettle-5.1/lastSuccessfulBuild/artifact/assembly/dist/pdi-ce-${PDI_TAG}.zip -O /tmp/pdi-ce-${PDI_TAG}.zip 
-RUN /usr/bin/wget -nv http://downloads.sourceforge.net/project/pentaho/Data%20Integration/5.2/pdi-ce-${PDI_TAG}.zip -O /tmp/pdi-ce-${PDI_TAG}.zip
-
-RUN  /usr/bin/unzip -q /tmp/pdi-ce-${PDI_TAG}.zip -d  $PENTAHO_HOME &&\
-     rm /tmp/pdi-ce-${PDI_TAG}.zip
+RUN /usr/bin/wget -nv http://nbtelecom.dl.sourceforge.net/project/pentaho/Data%20Integration/${PENTAHO_VERSION}/pdi-ce-${PENTAHO_TAG}.zip -O /tmp/pdi-ce-${PENTAHO_TAG}.zip
+RUN  /usr/bin/unzip -q /tmp/pdi-ce-${PENTAHO_TAG}.zip -d  $PENTAHO_HOME &&\
+     rm /tmp/pdi-ce-${PENTAHO_TAG}.zip
 
 COPY run.sh /opt/pentaho/data-integration/
 COPY slave_dyn.xml /opt/pentaho/data-integration/
