@@ -22,7 +22,7 @@ RUN /usr/bin/wget --progress=dot:giga http://downloads.sourceforge.net/project/p
     /usr/bin/unzip -q /tmp/pdi-ce-${PENTAHO_TAG}.zip -d  $PENTAHO_HOME &&\
      rm /tmp/pdi-ce-${PENTAHO_TAG}.zip
 
-COPY run.sh /opt/pentaho/data-integration/
+COPY scripts/ /opt/pentaho/data-integration/
 COPY slave_dyn.xml /opt/pentaho/data-integration/
 
 # AWS CLI
