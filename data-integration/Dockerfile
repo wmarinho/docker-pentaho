@@ -13,17 +13,22 @@ RUN . /etc/environment
 ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
 
 RUN apt-get update \
-	&& apt-get install wget unzip git -y && \
+	&& apt-get install wget unzip git vim -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 # Download Pentaho BI Server
-RUN /usr/bin/wget -nv http://nbtelecom.dl.sourceforge.net/project/pentaho/Data%20Integration/${PENTAHO_VERSION}/pdi-ce-${PENTAHO_TAG}.zip -O /tmp/pdi-ce-${PENTAHO_TAG}.zip
-RUN  /usr/bin/unzip -q /tmp/pdi-ce-${PENTAHO_TAG}.zip -d  $PENTAHO_HOME &&\
+RUN /usr/bin/wget --progress=dot:giga http://downloads.sourceforge.net/project/pentaho/Data%20Integration/${PENTAHO_VERSION}/pdi-ce-${PENTAHO_TAG}.zip -O /tmp/pdi-ce-${PENTAHO_TAG}.zip &&\
+    /usr/bin/unzip -q /tmp/pdi-ce-${PENTAHO_TAG}.zip -d  $PENTAHO_HOME &&\
      rm /tmp/pdi-ce-${PENTAHO_TAG}.zip
 
 COPY run.sh /opt/pentaho/data-integration/
 COPY slave_dyn.xml /opt/pentaho/data-integration/
+
+# AWS CLI
+RUN curl -O https://bootstrap.pypa.io/get-pip.py &&\
+    python get-pip.py &&\
+    pip install awscli
 
 WORKDIR /opt/pentaho/data-integration
 

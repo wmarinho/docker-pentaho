@@ -34,5 +34,10 @@ COPY config $PENTAHO_HOME/config
 COPY scripts $PENTAHO_HOME/scripts
 COPY scripts/run.sh /
 
+# AWS CLI
+RUN curl -O https://bootstrap.pypa.io/get-pip.py &&\
+    python get-pip.py &&\
+    pip install awscli
+
 EXPOSE 8080 
 CMD ["/run.sh"]
