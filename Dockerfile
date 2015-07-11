@@ -40,4 +40,4 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py &&\
     pip install awscli
 
 EXPOSE 8080 
-CMD ["/run.sh"]
+CMD ["sh", "run.sh"]
