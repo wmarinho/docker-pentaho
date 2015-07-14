@@ -1,14 +1,14 @@
-if [ ! -f "/.pentaho_pgconfig" ]; then
+if [ ! -f ".pentaho_pgconfig" ]; then
    sh $PENTAHO_HOME/scripts/setup_postgresql.sh
    #HOSTNAME=$(`echo hostname`)
 
    sed -i "s/node1/node_${NODE_ID}/g" $PENTAHO_HOME/biserver-ce/pentaho-solutions/system/jackrabbit/repository.xml
-
+   touch .pentaho_pgconfig
 fi
 
-if [ ! -f "/.install_plugin" ]; then
+if [ ! -f ".install_plugin" ]; then
    sh $PENTAHO_HOME/scripts/install_plugin.sh
-   touch /.install_plugin
+   touch .install_plugin
 fi
 
 if [ -f "./custom_script.sh" ]; then
