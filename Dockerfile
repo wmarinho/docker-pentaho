@@ -19,7 +19,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
 
 # Install Dependences
 RUN apt-get update; \
-    apt-get install wget unzip git postgresql-client-9.4 vim zip -y; \
+    apt-get install wget unzip git postgresql-client-9.4 vim zip nc -y; \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
     curl -O https://bootstrap.pypa.io/get-pip.py; \
     python get-pip.py; \
