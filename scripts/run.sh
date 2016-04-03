@@ -2,7 +2,7 @@ if [ ! -f ".pentaho_pgconfig" ]; then
    sh $PENTAHO_HOME/scripts/setup_postgresql.sh
    #HOSTNAME=$(`echo hostname`)
 
-   sed -i "s/node1/node_${NODE_ID}/g" $PENTAHO_HOME/biserver-ce/pentaho-solutions/system/jackrabbit/repository.xml
+   sed -i "s/node1/${HOSTNAME}/g" $PENTAHO_HOME/biserver-ce/pentaho-solutions/system/jackrabbit/repository.xml
    touch .pentaho_pgconfig
 fi
 
