@@ -3,8 +3,8 @@ FROM java:7
 MAINTAINER Wellington Marinho wpmarinho@globo.com
 
 # Init ENV
-ENV PENTAHO_VERSION 6.0
-ENV PENTAHO_TAG 6.0.1.0-386
+ENV PENTAHO_VERSION 6.1
+ENV PENTAHO_TAG 6.1.0.1-196
 
 ENV PENTAHO_HOME /opt/pentaho
 
