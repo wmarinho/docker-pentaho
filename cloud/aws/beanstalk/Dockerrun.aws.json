@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "pentaho-biserver",
-      "image": "wmarinho/pentaho-biserver:5.4",
+      "image": "wmarinho/pentaho-biserver:6.1",
       "essential": true,
       "memory": 128,
       "portMappings": [
